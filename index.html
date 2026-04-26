@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +21,6 @@
             background: #b5c6c9;
             color: #00363a;
             text-align: center;
-            padding: 0;
         }
 
         .logo {
@@ -29,8 +28,6 @@
             max-width: 100%;
             height: auto;
             display: block;
-            margin: 0;
-            border-radius: 0;
         }
 
         .menu {
@@ -68,12 +65,24 @@
             border-radius: 8px;
         }
 
-        video,
-        main img {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 8px;
+        audio {
             margin-top: 15px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border: none;
+            background: #00796b;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #004d40;
         }
 
         footer {
@@ -94,15 +103,15 @@
     <nav class="menu">
         <a href="NOS.html">Sobre nós</a>
         <a href="estudar.html">Estudo bíblico</a>
-        <a href="contato.html">Contato</a>
+        <a href="contato.html">Contacto</a>
     </nav>
 </header>
 
 <section>
     <h2>Venha nos visitar</h2>
     <p>Dias de cultos</p>
-    <p><strong>Sábados</strong> às dezenove horas e trinta minutos</p>
-    <p><strong>Domingos</strong> às dezessete horas e trinta minutos</p>
+    <p><strong>Sábados</strong> às 19h30</p>
+    <p><strong>Domingos</strong> às 17h30</p>
 </section>
 
 <main>
@@ -116,20 +125,27 @@
         <p>Fortalecer a fé</p>
     </article>
 
-    <video controls>
-        <source src="video.mp4" type="video/mp4">
-        Seu navegador não suporta vídeo.
-    </video>
+    <h2>🎧 Ouça uma mensagem</h2>
 
-    <img src="mela.svg" alt="Imagem ilustrativa">
+    <!-- PLAYER DE ÁUDIO -->
+    <audio id="audio" controls preload="auto">
+        <source src="audio.mp3" type="audio/mpeg">
+        O seu navegador não suporta áudio.
+    </audio>
+
+    <br>
+
+    <!-- BOTÕES -->
+    <button onclick="document.getElementById('audio').play()">▶ Tocar</button>
+    <button onclick="document.getElementById('audio').pause()">⏸ Pausar</button>
+
 </main>
 
 <footer>
-    <p>Rua Doutor Américo Jazelino da Costa Dias, Fazeres, Gondomar</p>
+    <p>Rua Doutor Américo Jazelino Dias da Costa, Fânzeres, Gondomar</p>
     <p>Todos os direitos reservados à COMUM CONGREGAÇÃO</p>
 </footer>
 
 </body>
 </html>
-
 
