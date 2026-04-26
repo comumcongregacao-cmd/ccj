@@ -6,6 +6,7 @@
     <title>COMUM CONGREGAÇÃO</title>
 
     <style>
+        /* Reset de estilos básicos */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -13,84 +14,127 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #e0f7fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e0f7fa;
+            color: #333;
+            line-height: 1.6;
         }
 
+        /* Cabeçalho e Logo */
         header {
-            background: #b5c6c9;
+            background-color: #b5c6c9;
             color: #00363a;
             text-align: center;
         }
 
         .logo {
-            width: 100vw;
+            width: 100%;
             max-width: 100%;
             height: auto;
             display: block;
         }
 
+        /* Menu de Navegação */
         .menu {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            padding: 15px 0;
-            background: #c7dcdf;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 15px 10px;
+            background-color: #c7dcdf;
         }
 
         .menu a {
             text-decoration: none;
             font-weight: bold;
             color: #00363a;
+            padding: 8px 15px;
+            transition: 0.3s;
         }
 
         .menu a:hover {
-            text-decoration: underline;
+            background-color: #b5c6c9;
+            border-radius: 5px;
         }
 
+        /* Seções de Texto */
         section {
             text-align: center;
-            padding: 30px 20px;
+            padding: 40px 20px;
         }
 
         main {
             padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
 
         article {
-            background: #c1d8db;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
+            background-color: #c1d8db;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 15px;
+            color: #004d40;
+        }
+
+        /* Container do Player de Áudio */
+        .audio-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 450px;
         }
 
         audio {
-            margin-top: 15px;
             width: 100%;
-            max-width: 400px;
+            margin-bottom: 15px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
         }
 
         button {
-            margin-top: 10px;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border: none;
-            background: #00796b;
+            background-color: #00796b;
             color: white;
-            border-radius: 5px;
+            border-radius: 30px;
             cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: transform 0.2s, background-color 0.3s;
         }
 
         button:hover {
-            background: #004d40;
+            background-color: #004d40;
+            transform: scale(1.05);
         }
 
+        button:active {
+            transform: scale(0.95);
+        }
+
+        /* Rodapé */
         footer {
-            background: #b5c6c9;
+            background-color: #b5c6c9;
             color: #00363a;
             text-align: center;
-            padding: 20px;
-            margin-top: 20px;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
@@ -127,24 +171,39 @@
 
     <h2>🎧 Ouça uma mensagem</h2>
 
-    <!-- PLAYER DE ÁUDIO -->
-    <audio id="audio" controls preload="auto">
-        <source src="cantada.mp3" type="audio/mpeg">
-        O seu navegador não suporta áudio.
-    </audio>
+    <div class="audio-box">
+        <audio id="player">
+            <source src="cantada.mp3" type="audio/mpeg">
+            Seu navegador não suporta este player de áudio.
+        </audio>
 
-    <br>
-
-    <!-- BOTÕES -->
-    <button onclick="document.getElementById('audio').play()">▶ Tocar</button>
-    <button onclick="document.getElementById('audio').pause()">⏸ Pausar</button>
-
+        <div class="controls">
+            <button onclick="playAudio()">▶ Tocar</button>
+            <button onclick="pauseAudio()">⏸ Pausar</button>
+        </div>
+    </div>
 </main>
 
 <footer>
     <p>Rua Doutor Américo Jazelino Dias da Costa, Fânzeres, Gondomar</p>
-    <p>Todos os direitos reservados à COMUM CONGREGAÇÃO</p>
+    <p>&copy; 2026 COMUM CONGREGAÇÃO - Todos os direitos reservados</p>
 </footer>
+
+<script>
+    const meuAudio = document.getElementById('player');
+
+    function playAudio() {
+        // O play() retorna uma promessa, tratamos o erro caso o arquivo não exista
+        meuAudio.play().catch(error => {
+            console.error("Erro ao carregar o áudio:", error);
+            alert("Não foi possível carregar o arquivo 'cantada.mp3'. Verifique se o nome está correto no GitHub.");
+        });
+    }
+
+    function pauseAudio() {
+        meuAudio.pause();
+    }
+</script>
 
 </body>
 </html>
