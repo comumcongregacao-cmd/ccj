@@ -191,24 +191,11 @@
 
 <script>
    
-     <!-- ÁUDIO CORRIGIDO -->
+      <!-- ÁUDIO CORRIGIDO -->
     <audio controls>
         <source src="cantada.mp3" type="audio/mpeg">
         Seu navegador não suporta áudio.
     </audio>
-    
-    const meuAudio = document.getElementById('player');
-
-    function playAudio() {
-        // O play() retorna uma promessa, tratamos o erro caso o arquivo não exista
-        meuAudio.play().catch(error => {
-            console.error("Erro ao carregar o áudio:", error);
-            alert("Não foi possível carregar o arquivo 'cantada.mp3'. Verifique se o nome está correto no GitHub.");
-        });
-    }
-
-    function pauseAudio() {
-        meuAudio.pause();
     }
 </script>
 
